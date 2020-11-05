@@ -48,7 +48,7 @@ void My100GeV2p9to3p0::SlaveBegin(TTree * /*tree*/)
 
    TString option = GetOption();
 
-    h1 = new TH1F("h1", "Reconstructed Energy 100 GeV (eta = 2.9 - 3.0)", (100-60)/2 , 60, 100);
+    h1 = new TH1F("h1", "Reconstructed Energy 100 GeV (eta = 2.9 - 3.0)", (140-40)/2 , 40, 140);
    GetOutputList() -> Add (h1);
    h1->SetXTitle("Energy (Gev)");
    h1->SetYTitle("Number of Entries");

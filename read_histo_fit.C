@@ -12,7 +12,7 @@
  b->Fit("gaus", "","",82,94);
  b->SetFillColorAlpha(38, 1);
  b->SetXTitle("Energy (Gev)");
- b->SetYTitle("Number of Entries / 1 GeV");
+ b->SetYTitle("Number of Entries / 2 GeV");
  TPaveStats *ptstats = new TPaveStats(0.8,0.7,0.98,0.935,"brNDC");
     ptstats->SetName("stats");
     ptstats->SetBorderSize(1);
