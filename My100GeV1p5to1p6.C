@@ -49,7 +49,7 @@ void My100GeV1p5to1p6::SlaveBegin(TTree * /*tree*/)
    TString option = GetOption();
 
 
-   h1 = new TH1F("h1", "Reconstructed Energy 100 GeV (eta = 1.5 - 1.6)", (140-40)/2 , 40, 140);
+   h1 = new TH1F("h1", "Reconstructed Energy 100 GeV (eta = 1.5 - 1.6)", (140-60)/2 , 60, 140);
    GetOutputList() -> Add (h1);
    h1->SetXTitle("Energy (Gev)");
    h1->SetYTitle("Number of Entries");
@@ -89,7 +89,7 @@ Bool_t My100GeV1p5to1p6::Process(Long64_t entry)
 
         for (int irc = 0, nrc =  rechit_energy.GetSize(); irc < nrc; ++irc)
         {
-	  if ( ( ( (rechit_eta[irc])  > 1.5) && ( (rechit_eta[irc])  < 1.6) ) ||  ( ( (rechit_eta[irc])  > -1.6) && ( (rechit_eta[irc])  < -1.5) ) )
+	  if ( ( ( (gen_eta[igen])  > 1.5) && ( (gen_eta[igen])  < 1.6) ) ||  ( ( (gen_eta[igen])  > -1.6) && ( (gen_eta[igen])  < -1.5) ) )
 	    
 	  {
          

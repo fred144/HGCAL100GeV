@@ -2,17 +2,17 @@
  // also attempt at fiddling with stats box
  gStyle->SetOptFit(1111);
  
- TFile *a = TFile::Open("histo100GeV2930eres.root");
+ TFile *f = TFile::Open("histo100GeV1516eres.root");
  //TFile *f=new TFile("histo.root"); 
  //f->cd();
- TH1F *b=(TH1F*)a->Get("h1");
- peak=b->GetMean() ;
- sig=b->GetStdDev();
+ TH1F *h=(TH1F*)f->Get("h1");
+ peak=h->GetMean() ;
+ sig=h->GetStdDev();
  cout << peak << "  " << sig << endl;
- b->Fit("gaus", "","",82,94);
- b->SetFillColorAlpha(38, 1);
- b->SetXTitle("Energy (Gev)");
- b->SetYTitle("Number of Entries / 2 GeV");
+ h->Fit("gaus", "","",96,108);
+ h->SetFillColorAlpha(38, 1);
+ h->SetXTitle("Energy (Gev)");
+ h->SetYTitle("Number of Entries / 2 GeV");
  TPaveStats *ptstats = new TPaveStats(0.8,0.7,0.98,0.935,"brNDC");
     ptstats->SetName("stats");
     ptstats->SetBorderSize(1);
@@ -23,7 +23,7 @@
     ptstats->SetOptStat(1110);
     ptstats->SetOptFit(1111);
     ptstats->Draw();
-    b->GetListOfFunctions()->Add(ptstats);
-    ptstats->SetParent(b);
+    h->GetListOfFunctions()->Add(ptstats);
+    ptstats->SetParent(h);
 }
  

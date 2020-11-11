@@ -48,7 +48,7 @@ void My100GeV2p9to3p0::SlaveBegin(TTree * /*tree*/)
 
    TString option = GetOption();
 
-    h1 = new TH1F("h1", "Reconstructed Energy 100 GeV (eta = 2.9 - 3.0)", (140-40)/2 , 40, 140);
+    h1 = new TH1F("h1", "Reconstructed Energy 100 GeV (eta = 2.9 - 3.0)", (140-60)/2 , 60, 140);
    GetOutputList() -> Add (h1);
    h1->SetXTitle("Energy (Gev)");
    h1->SetYTitle("Number of Entries");
@@ -77,6 +77,8 @@ Bool_t My100GeV2p9to3p0::Process(Long64_t entry)
 // Loop over electrons
       for (int igen = 0, ngen =  gen_energy.GetSize(); igen < ngen; ++igen)
        {
+	
+
         const double electronmass = 0.000511;
         TLorentzVector TLVElectron; TLVElectron.SetPtEtaPhiM(gen_pt[igen],gen_eta[igen],gen_phi[igen],electronmass);
 
@@ -85,9 +87,9 @@ Bool_t My100GeV2p9to3p0::Process(Long64_t entry)
 
         for (int irc = 0, nrc =  rechit_energy.GetSize(); irc < nrc; ++irc)
         {
-	  if ( ( ( (rechit_eta[irc])  > 2.9) && ( (rechit_eta[irc])  < 3.0) ) || ( ( (rechit_eta[irc])  > -3.0) && ( (rechit_eta[irc])  < -2.9) ) )
+	  if ( ( ( (gen_eta[igen])  > 2.9) && ( (gen_eta[igen])  < 3.0) ) || ( ( (gen_eta[igen])  > -3.0) && ( (gen_eta[igen])  < -2.9) ) )
 	    
-	  {
+	   {
          
 	    if (rechit_layer[irc]<29)
 	    {//start if
